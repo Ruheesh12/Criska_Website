@@ -1,0 +1,61 @@
+/* ==========================================================================
+   CRISKA DESIGN TOKENS
+   Extracted with pixel-perfect accuracy from Figma export & SVG source
+   ========================================================================== */
+
+:root {
+  /* Colors - Exact Figma Hex Values */
+  --color-ink: #0D0503;
+  --color-white: #FFFFFF;
+  --color-dark: #292929;
+  --color-dark-surface: #1E1E1E;
+  --color-paper: #F2F2F2;
+  --color-paper-light: #F8F9FA;
+  --color-border: #CCCCCC;
+  --color-border-dark: #3D3D3D;
+  --color-muted: #555555;
+  --color-muted-light: #777777;
+  --color-muted-dark: #D4D4D4;
+  --color-nav-bg: rgba(221, 221, 221, 0.88);
+
+  /* Signature Section Accent Colors from Figma */
+  --color-blue: #0056D2;          /* Primary buttons, links, active state */
+  --color-blue-hover: #0046AB;
+  --color-blue-light: #EBF3FF;
+  --color-wine: #5A1212;          /* Hero Heading ("Technology. Talent...") */
+  --color-green: #2E6721;         /* Capabilities Heading ("One Partner...") */
+  --color-teal: #32838E;          /* Process Step 1 ("Strategy and discovery") */
+  --color-rust: #B9613E;          /* Process Step 2 / WhyCriska Line 1 */
+  --color-crimson: #963C3E;       /* Process Step 3 ("Scale and optimize") */
+  --color-magenta: #7A1044;       /* Security Heading ("Built for Enterprise...") */
+  --color-navy: #2C3B4D;          /* Case Studies Heading / WhyCriska Line 2 */
+  --color-gold: #856A1B;          /* Career Heading ("Build your career...") */
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --container-max-width: 1360px;
+  --container-padding: clamp(20px, 4vw, 48px);
+  --section-padding-y: clamp(72px, 8vw, 120px);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.12);
+  --shadow-dark: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --shadow-glow-blue: 0 0 35px rgba(0, 86, 210, 0.35);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
