@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Button } from './Button';
 
@@ -20,11 +21,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
   // Prevent background scroll when mobile menu is active
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
     }
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [mobileMenuOpen]);
 
   const navLinks = [
@@ -213,24 +216,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div
-          className="mobile-drawer"
-          style={{
-            position: 'fixed',
-            top: '72px',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(235, 237, 240, 0.98)',
-            backdropFilter: 'blur(20px)',
-            zIndex: 99,
-            padding: '32px 24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            animation: 'slideDownMobile 0.25s ease-out forwards',
-          }}
-        >
+        createPortal(
+          <div
+            className="mobile-drawer"
+            style={{
+              position: 'fixed',
+              top: '72px',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              minHeight: 'calc(100dvh - 72px)',
+              overflowY: 'auto',
+              backgroundColor: '#05070B',
+              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 18px 50px rgba(0, 0, 0, 0.35)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              zIndex: 1000,
+              padding: '32px 24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+              animation: 'slideDownMobile 0.25s ease-out forwards',
+            }}
+          >
           <style>{`
             @keyframes slideDownMobile {
               from { opacity: 0; transform: translateY(-12px); }
@@ -253,9 +262,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   fontFamily: 'var(--font-display)',
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: 'var(--color-ink)',
+                  color: '#F5F7FA',
                   padding: '8px 0',
-                  borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                 }}
               >
                 {link.label}
@@ -285,7 +294,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               Contact Us
             </Button>
           </div>
-        </div>
+          </div>,
+          document.body
+        )
       )}
 
       {/* Responsive media rules */}
